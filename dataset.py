@@ -19,7 +19,7 @@ class FundusDataset(Dataset):
         self.file_names = file_names
         self.transform = transform
         self.mode = mode
-        self.td_image_paths = get_data_paths_list(domain='Domain2', split='train', type='image')
+        self.td_image_paths = get_data_paths_list(domain='Domain1', split='test', type='img')
 
     def __len__(self):
         return len(self.file_names)
@@ -62,8 +62,8 @@ def load_image(path):
 
 
 def load_mask(path):
-    mask = cv2.imread(str(path).replace('image', 'mask').replace('jpg', 'png'), 0)
-    mask[mask==0], mask[mask==128], mask[mask==255] = 2, 1, 0 # cup, disc, background
+    mask = cv2.imread(str(path).replace('img', 'msk').replace('jpg', 'png'), 0)
+    mask[mask!=0], mask[mask == 0]= 1, 0 # mitosis, background. Inverse of aiosyn data!
     return mask
 
 

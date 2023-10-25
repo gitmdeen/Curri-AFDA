@@ -213,6 +213,6 @@ def train_cl(args, model, criterion, train_image_paths, val_image_paths, validat
             print('===================saving the best model!========================')
             torch.save(checkpoint, os.path.join(save_model_path, "best_model_dice.pt"))
 
-        print('Best epoch for dice unitl now:', best_epoch_dice, ' best dice:', best_dice)
+        print('Best epoch for dice until now:', best_epoch_dice, ' best dice:', best_dice)
     print('==> Training finished.')
     print('Best epoch for dice:', best_epoch_dice, ' best dice:', best_dice)

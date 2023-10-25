@@ -23,11 +23,11 @@ def main():
     parser = argparse.ArgumentParser()
     arg = parser.add_argument
     arg('--batch_size', type=int, default=16)
-    arg('--n_epochs', type=int, default=100, help='the number of total epochs')
+    arg('--n_epochs', type=int, default=20, help='the number of total epochs')
     arg('--lr', type=float, default=1e-3)
     arg('--workers', type=int, default=4)
     arg('--seed', type=int, default=3407)
-    arg('--num_classes', type=int, default=3)
+    arg('--num_classes', type=int, default=2)
     arg('--beta', type=float, default=0.006, help='the amplitude scaling coefficient')
     arg('--ratio', type=float, default=1, help='the weighting coefficient')
     arg('--model', type=str, default='UNet', choices=['UNet', 'SWin-UNet'])
@@ -84,11 +84,11 @@ def main():
 
     # get train, val, test files
     train_image_paths = get_data_paths_list(
-        domain='Domain3', split='train', type='image')
+        domain='Domain1', split='train', type='img')
     val_image_paths = get_data_paths_list(
-        domain='Domain3', split='test', type='image')
+        domain='Domain1', split='val', type='img')
     test_image_paths = get_data_paths_list(
-        domain='Domain2', split='test', type='image')
+        domain='Domain1', split='test', type='img')
     print('Num train = {}, Num_val = {}, Num test = {}'.format(
         len(train_image_paths), len(val_image_paths), len(test_image_paths)))
 
